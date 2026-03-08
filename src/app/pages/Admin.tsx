@@ -144,11 +144,9 @@ export default function Admin() {
   const formatDate = (timestamp: string) => {
     const date = new Date(timestamp);
     return date.toLocaleString("en-US", {
-      year: "numeric",
+      day: "2-digit",
       month: "short",
-      day: "numeric",
-      hour: "2-digit",
-      minute: "2-digit",
+      year: "numeric",
     });
   };
 
@@ -216,7 +214,7 @@ export default function Admin() {
             </div>
 
             <div className="space-y-4">
-              {confessions.map((confession) => (
+              {confessions.map((confession, index) => (
                 <div
                   key={confession.id}
                   className="rounded-xl p-6"
@@ -226,11 +224,11 @@ export default function Admin() {
                   }}
                 >
                   <div className="flex items-start justify-between mb-4 flex-wrap gap-3">
-                    <div>
-                      <div className="flex items-center gap-3 mb-1">
-                        <p className="font-semibold text-lg" style={{ color: '#ffffff' }}>
-                          {confession.name || "Anonymous"}
-                        </p>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <h3 className="font-bold text-xl" style={{ color: '#ff2e63' }}>
+                          Confession #{confessions.length - index}
+                        </h3>
                         {confession.reviewed && (
                           <span 
                             className="px-2 py-1 rounded text-xs font-semibold"
@@ -240,9 +238,17 @@ export default function Admin() {
                           </span>
                         )}
                       </div>
-                      <p className="text-sm" style={{ color: '#64748b' }}>
-                        {formatDate(confession.timestamp)}
-                      </p>
+                      <div className="space-y-2 mb-4">
+                        <p style={{ color: '#e2e8f0' }}>
+                          <span style={{ color: '#94a3b8' }}>Name:</span> {confession.name || "Anonymous"}
+                        </p>
+                        <p style={{ color: '#e2e8f0' }}>
+                          <span style={{ color: '#94a3b8' }}>Confession:</span> {confession.confession}
+                        </p>
+                        <p style={{ color: '#e2e8f0' }}>
+                          <span style={{ color: '#94a3b8' }}>Submitted:</span> {formatDate(confession.timestamp)}
+                        </p>
+                      </div>
                     </div>
                     <div className="flex gap-2">
                       <button
@@ -263,11 +269,6 @@ export default function Admin() {
                         Delete
                       </button>
                     </div>
-                  </div>
-                  <div className="rounded-lg p-4" style={{ backgroundColor: '#0f172a' }}>
-                    <p style={{ color: '#e2e8f0', lineHeight: '1.6' }}>
-                      {confession.confession}
-                    </p>
                   </div>
                 </div>
               ))}

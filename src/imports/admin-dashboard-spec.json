@@ -1,0 +1,88 @@
+Create an Admin Dashboard Website for the project “TGP Confessions” that will be deployed along with the main site tgpconfessions.vercel.app.
+
+The purpose of the admin site is to allow the administrator to securely log in and view all submitted confessions, including the name of the person who submitted them. Regular users must never be able to see any confessions.
+
+ADMIN LOGIN PAGE
+
+Create a page /admin/login.
+
+The login page should contain:
+
+• Title: Admin Login – TGP Confessions
+• Input field: Username
+• Input field: Password
+• Button: Login
+
+Only the correct admin credentials should allow access.
+
+If the login is incorrect, show the message:
+
+“Invalid username or password.”
+
+After successful login, redirect the admin to:
+
+/admin/dashboard
+
+ADMIN DASHBOARD
+
+The dashboard should display all submitted confessions in a clean table layout.
+
+Each confession entry should contain:
+
+• Name of the sender (admin only)
+• Confession message
+• Date and time submitted
+
+Example layout:
+
+Confession #1
+Name: Rahul
+Confession: I like someone from TGP but I am too shy to say it.
+Submitted: 08 Mar 2026
+
+Confession #2
+Name: Anonymous
+Confession: The canteen samosas are the best part of college.
+Submitted: 08 Mar 2026
+
+ADMIN CONTROLS
+
+The admin dashboard should allow the admin to:
+
+• Delete a confession
+• Mark a confession as reviewed
+• Refresh the list of confessions
+
+SECURITY REQUIREMENTS
+
+• The admin dashboard must only be accessible after login.
+• If someone tries to access /admin/dashboard without logging in, they should be redirected to /admin/login.
+• Regular visitors should never see the confessions or sender names.
+
+DESIGN
+
+Use the same dark theme as the main website.
+
+Background: #0f172a
+Card/Table background: #1e293b
+Accent color: #ff2e63
+
+UI elements should include:
+
+• Clean table layout for confessions
+• Rounded buttons
+• Mobile responsive layout
+
+PROJECT STRUCTURE
+
+/admin
+login.html
+dashboard.html
+admin.js
+
+/api
+getConfessions.js
+deleteConfession.js
+auth.js
+
+The system should securely fetch confession data from the backend and display it only inside the admin dashboard.

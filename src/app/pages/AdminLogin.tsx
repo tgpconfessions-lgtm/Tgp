@@ -35,7 +35,7 @@ export default function AdminLogin() {
       if (response.ok && data.success) {
         // Store token in localStorage
         localStorage.setItem("adminToken", data.token);
-        navigate("/admin");
+        navigate("/admin/dashboard");
       } else {
         setError(data.error || "Login failed");
       }
@@ -52,7 +52,7 @@ export default function AdminLogin() {
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold mb-2" style={{ color: '#ffffff' }}>
-            Admin Login
+            Admin Login – TGP Confessions
           </h1>
           <p className="text-base" style={{ color: '#94a3b8' }}>
             Access the admin dashboard
